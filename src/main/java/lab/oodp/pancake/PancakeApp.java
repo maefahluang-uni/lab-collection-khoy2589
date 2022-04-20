@@ -10,8 +10,7 @@ public class PancakeApp {
 	
 	public PancakeShop shop;
 
-    private void start() {
-
+    private void start() throws HungryException {
         // Simulate a day's business.
         shop.serveLunch();
 
@@ -30,7 +29,7 @@ public class PancakeApp {
         int numCustomers = Util.randomValueBetwen(100, 200);
 
         // TODO: remove null below,initialize the queue variable appropriately
-        Deque<Customer> queue = null;
+        Deque<Customer> queue = new ArrayDeque<>();
 
         for (int i = 1; i <= numCustomers; i++) {
 
@@ -41,6 +40,7 @@ public class PancakeApp {
             // TODO Add customer to the queue. 
             //HINT: Remember, queues are First-In-First-Out.
             //queue.
+            queue.addLast(customer);
 
         }
 
@@ -50,7 +50,7 @@ public class PancakeApp {
     /**
      * Program entry point. Do not edit.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws HungryException{
         PancakeApp pancakeApp = new PancakeApp();
         // Create a queue of customers
         Deque<Customer> customers = pancakeApp.createCustomerQueue();
